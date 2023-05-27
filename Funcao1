@@ -1,1 +1,18 @@
+package main
 
+import "fmt"
+
+func calcularmedia(slice []int) float64 {
+	soma := 0
+	for _, valor := range slice {
+		soma += valor
+	}
+
+	return float64(soma) / float64(len(slice))
+}
+
+func main() {
+	numeros := []int (10, 20, 30, 40, 50 )
+	media := calcularmedia(numeros)
+	fmt.Println("A média é:", media)
+}
