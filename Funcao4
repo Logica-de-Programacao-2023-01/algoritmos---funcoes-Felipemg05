@@ -1,1 +1,24 @@
+package main
 
+import (
+	"fmt"
+	"sort"
+)
+
+func encontrarSegundoMaior(valores []int) int {
+	if len(valores) < 2 {
+		panic("O slice deve conter pelo menos dois elementos.")
+	}
+
+	sort.Slice(valores, func(i, j int) bool {
+		return valores[i] > valores[j]
+	})
+
+	return valores[1]
+}
+
+func main() {
+	slice := []int{10, 5, 7, 2, 8}
+	segundoMaior := encontrarSegundoMaior(slice)
+	fmt.Println("Segundo maior valor:", segundoMaior)
+}
