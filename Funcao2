@@ -1,1 +1,24 @@
+package main
 
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	texto := "Meu nome é Jobson"
+	QuantidadeVogais := contarVogais(texto)
+	fmt.Println("Quantidade de vogais:", QuantidadeVogais)
+}
+
+func contarVogais(texto string) int {
+	vogais := "aeiouAEIOU"
+	count := 0
+
+	for _, char := range texto {
+		if strings.ContainsRune(vogais, char) {
+			count++
+		}
+	}
+	return count
+}
