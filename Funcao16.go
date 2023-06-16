@@ -3,31 +3,34 @@ package main
 import (
 	"errors"
 	"fmt"
+	"strings"
 )
 
-func containsNumber(number int, slice []int) (bool, error) {
-	if len(slice) == 0 {
-		return false, errors.New("Slice vazio")
+func replaceVowels(str string) (string, error) {
+	if len(str) == 0 {
+		return "", errors.New("String vazia")
 	}
 
-	for _, n := range slice {
-		if n == number {
-			return true, nil
+	vowels := "aeiouAEIOU"
+	var result strings.Builder
+	for _, char := range str {
+		if strings.ContainsRune(vowels, char) {
+			result.WriteRune('*')
+		} else {
+			result.WriteRune(char)
 		}
 	}
 
-	return false, nil
+	return result.String(), nil
 }
 
 func main() {
-	slice := []int{1, 2, 3, 4, 5}
-	number := 3
-
-	contains, err := containsNumber(number, slice)
+	str := "Salve, rapaziada !"
+	replacedStr, err := replaceVowels(str)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	fmt.Println(contains)
+	fmt.Println(replacedStr)
 }
